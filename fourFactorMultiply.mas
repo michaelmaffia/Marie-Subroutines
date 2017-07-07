@@ -51,11 +51,11 @@ Z, Dec 0 /Final Result
 Sum, Dec 0 /Subroutine Product
 
 	/MULTIPLICATION SUBROUTINE
-Multiply, Hex 0 /Store return address here
-Load Y /Load second parameter to be used as counter
+Multiply, Hex 0 /Store return address
+Load Y /Load second parameter
 Store Ctr /Store as counter
 Clear /Clear sum
-Store Sum /Zero out the sum to begin
+Store Sum 
 Loop, Load Sum /Load the sum
 Add X /Add first parameter
 Store  Sum /Store result in Sum
@@ -63,6 +63,6 @@ Load  Ctr
 Subt One /Decrement counter
 Store Ctr /Store counter
 SkipCond  400 /Skip if counter is zero.
-Jump Loop /Continue subroutine loop
-JumpI Multiply /Done with subroutine, return to main
+Jump Loop /Continue subroutine
+JumpI Multiply /Done with subroutine, return
 END
