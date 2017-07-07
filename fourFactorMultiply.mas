@@ -1,0 +1,68 @@
+ORG  100 /Start Here
+Input 
+Store A /Store Input as A
+Output
+Load A
+Store X /Store A in first parameter for subroutine
+Input
+Store B / Store Input as B
+Output
+Load  B
+Store Y /Store B in second parameter for subroutine
+JnS Multiply /Jump to multiplication subroutine
+Load Sum /Get Load the result
+Store  AB /AB = A x B
+Input
+Store C /Store Input as C
+Output
+Load C
+Store X /Store C in first parameter
+Input
+Store D /Store Input as D
+Output
+Load D
+Store Y /Store D in second parameter
+JnS Multiply /Jump to multiplication subroutine
+Load Sum /Get result
+Store CD /CD = C x D
+Load CD /Load product of CD
+Store X Store as first parameter for subroutine
+Load AB /Load product of AB
+Store Y Store as second parameter for subroutine
+JnS Multiply /Jump to multiplication subroutine
+Load Sum /Load product of AB*CD
+Store Z /Final Result Stored
+EndLoop, Load Z /Get full result
+Output /Output Final Result
+Halt /Terminate program
+
+	/VARIABLES
+A, Dec 0
+B, Dec 0 
+C, Dec 0 
+D, Dec 0 
+X, Dec 0 /First parameter for subroutine
+Y, Dec 0 /Second parameter for subroutine
+Ctr, Dec 0 /Looping Counter
+One, Dec 1 /Constant for decrementation
+AB, Dec 0 /Product of AB
+CD, Dec 0 /Product of CD
+Z, Dec 0 /Final Result
+Sum, Dec 0 /Subroutine Product
+
+	/MULTIPLICATION SUBROUTINE
+Multiply, Hex 0 /Store return address here
+Load Y /Load second parameter to be used as counter
+Store Ctr /Store as counter
+Clear /Clear sum
+Store Sum /Zero out the sum to begin
+Loop, Load Sum /Load the sum
+Add X /Add first parameter
+Store  Sum /Store result in Sum
+Load  Ctr
+Subt One /Decrement counter
+Store Ctr /Store counter
+SkipCond  400 /Skip if counter is zero.
+Jump Loop /Continue subroutine loop
+JumpI Multiply /Done with subroutine, return to main
+END
